@@ -20,22 +20,22 @@ The following files have been resolved:
    com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.15.4:compile[36m -- module com.fasterxml.jackson.datatype.jsr310[m
    com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.15.4:compile[36m -- module com.fasterxml.jackson.module.paramnames[m
    org.springframework.boot:spring-boot-starter-tomcat:jar:3.2.4:compile[36m -- module spring.boot.starter.tomcat[0;1m [auto][m
-   org.apache.tomcat.embed:tomcat-embed-core:jar:10.1.19:compile[36m -- module org.apache.tomcat.embed.core[m
-   org.apache.tomcat.embed:tomcat-embed-websocket:jar:10.1.19:compile[36m -- module org.apache.tomcat.embed.websocket[m
-   org.springframework:spring-web:jar:6.1.5:compile[36m -- module spring.web[0;1m [auto][m
-   org.springframework:spring-beans:jar:6.1.5:compile[36m -- module spring.beans[0;1m [auto][m
+   org.apache.tomcat.embed:tomcat-embed-core:jar:10.1.47:compile[36m -- module org.apache.tomcat.embed.core[m
+   org.apache.tomcat.embed:tomcat-embed-websocket:jar:10.1.47:compile[36m -- module org.apache.tomcat.embed.websocket[m
+   org.springframework:spring-web:jar:6.1.21:compile[36m -- module spring.web[0;1m [auto][m
+   org.springframework:spring-beans:jar:6.1.21:compile[36m -- module spring.beans[0;1m [auto][m
    io.micrometer:micrometer-observation:jar:1.12.4:compile[36m -- module micrometer.observation[0;1m [auto][m
    io.micrometer:micrometer-commons:jar:1.12.4:compile[36m -- module micrometer.commons[0;1m [auto][m
-   org.springframework:spring-webmvc:jar:6.1.5:compile[36m -- module spring.webmvc[0;1m [auto][m
-   org.springframework:spring-aop:jar:6.1.5:compile[36m -- module spring.aop[0;1m [auto][m
-   org.springframework:spring-context:jar:6.1.5:compile[36m -- module spring.context[0;1m [auto][m
-   org.springframework:spring-expression:jar:6.1.5:compile[36m -- module spring.expression[0;1m [auto][m
+   org.springframework:spring-webmvc:jar:6.1.21:compile[36m -- module spring.webmvc[0;1m [auto][m
+   org.springframework:spring-aop:jar:6.1.21:compile[36m -- module spring.aop[0;1m [auto][m
+   org.springframework:spring-context:jar:6.1.21:compile[36m -- module spring.context[0;1m [auto][m
+   org.springframework:spring-expression:jar:6.1.21:compile[36m -- module spring.expression[0;1m [auto][m
    org.springframework.boot:spring-boot-starter-data-jpa:jar:3.2.4:compile[36m -- module spring.boot.starter.data.jpa[0;1m [auto][m
    org.springframework.boot:spring-boot-starter-aop:jar:3.2.4:compile[36m -- module spring.boot.starter.aop[0;1m [auto][m
    org.aspectj:aspectjweaver:jar:1.9.21:compile[36m -- module org.aspectj.weaver[0;1m [auto][m
    org.springframework.boot:spring-boot-starter-jdbc:jar:3.2.4:compile[36m -- module spring.boot.starter.jdbc[0;1m [auto][m
    com.zaxxer:HikariCP:jar:5.0.1:compile[36m -- module com.zaxxer.hikari[m
-   org.springframework:spring-jdbc:jar:6.1.5:compile[36m -- module spring.jdbc[0;1m [auto][m
+   org.springframework:spring-jdbc:jar:6.1.21:compile[36m -- module spring.jdbc[0;1m [auto][m
    org.hibernate.orm:hibernate-core:jar:6.4.4.Final:compile[36m -- module org.hibernate.orm.core[0;1m [auto][m
    jakarta.persistence:jakarta.persistence-api:jar:3.1.0:compile[36m -- module jakarta.persistence[m
    jakarta.transaction:jakarta.transaction-api:jar:2.0.1:compile[36m -- module jakarta.transaction[m
@@ -53,12 +53,12 @@ The following files have been resolved:
    org.antlr:antlr4-runtime:jar:4.13.0:compile[36m -- module org.antlr.antlr4.runtime[0;1m [auto][m
    org.springframework.data:spring-data-jpa:jar:3.2.4:compile[36m -- module spring.data.jpa[0;1m [auto][m
    org.springframework.data:spring-data-commons:jar:3.2.4:compile[36m -- module spring.data.commons[0;1m [auto][m
-   org.springframework:spring-orm:jar:6.1.5:compile[36m -- module spring.orm[0;1m [auto][m
-   org.springframework:spring-tx:jar:6.1.5:compile[36m -- module spring.tx[0;1m [auto][m
+   org.springframework:spring-orm:jar:6.1.21:compile[36m -- module spring.orm[0;1m [auto][m
+   org.springframework:spring-tx:jar:6.1.21:compile[36m -- module spring.tx[0;1m [auto][m
    org.slf4j:slf4j-api:jar:2.0.12:compile[36m -- module org.slf4j[m
-   org.springframework:spring-aspects:jar:6.1.5:compile[36m -- module spring.aspects[0;1m [auto][m
+   org.springframework:spring-aspects:jar:6.1.21:compile[36m -- module spring.aspects[0;1m [auto][m
    org.springframework.boot:spring-boot-starter-validation:jar:3.2.4:compile[36m -- module spring.boot.starter.validation[0;1m [auto][m
-   org.apache.tomcat.embed:tomcat-embed-el:jar:10.1.19:compile[36m -- module org.apache.tomcat.embed.el[m
+   org.apache.tomcat.embed:tomcat-embed-el:jar:10.1.47:compile[36m -- module org.apache.tomcat.embed.el[m
    org.hibernate.validator:hibernate-validator:jar:8.0.1.Final:compile[36m -- module org.hibernate.validator[0;1m [auto][m
    jakarta.validation:jakarta.validation-api:jar:3.0.2:compile[36m -- module jakarta.validation[m
    org.springdoc:springdoc-openapi-starter-webmvc-ui:jar:2.5.0:compile[36m -- module org.springdoc.openapi.ui[0;1m [auto][m
@@ -77,6 +77,6 @@ The following files have been resolved:
    org.checkerframework:checker-qual:jar:3.31.0:runtime[36m -- module org.checkerframework.checker.qual[0;1m [auto][m
    jakarta.xml.bind:jakarta.xml.bind-api:jar:4.0.2:compile[36m -- module jakarta.xml.bind[m
    jakarta.activation:jakarta.activation-api:jar:2.1.3:compile[36m -- module jakarta.activation[m
-   org.springframework:spring-core:jar:6.1.5:compile[36m -- module spring.core[0;1m [auto][m
-   org.springframework:spring-jcl:jar:6.1.5:compile[36m -- module spring.jcl[0;1m [auto][m
+   org.springframework:spring-core:jar:6.1.21:compile[36m -- module spring.core[0;1m [auto][m
+   org.springframework:spring-jcl:jar:6.1.21:compile[36m -- module spring.jcl[0;1m [auto][m
 

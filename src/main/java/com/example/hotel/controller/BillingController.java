@@ -24,13 +24,13 @@ public class BillingController {
 
     @GetMapping("/reservations/{id}/invoice")
     @Operation(summary = "Get invoice for reservation")
-    public InvoiceResponse getInvoice(@PathVariable Long id) {
+    public InvoiceResponse getInvoice(@PathVariable("id") Long id) {
         return billingService.getInvoiceByReservation(id);
     }
 
     @PostMapping("/invoices/{id}/payments")
     @Operation(summary = "Add payment to invoice")
-    public ResponseEntity<PaymentResponse> addPayment(@PathVariable Long id,
+    public ResponseEntity<PaymentResponse> addPayment(@PathVariable("id") Long id,
                                                       @RequestBody @Validated PaymentRequest request) {
         return new ResponseEntity<>(billingService.addPayment(id, request), HttpStatus.CREATED);
     }

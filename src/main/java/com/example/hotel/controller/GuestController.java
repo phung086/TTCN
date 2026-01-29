@@ -37,19 +37,19 @@ public class GuestController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Get guest by id")
-    public GuestResponse get(@PathVariable Long id) {
+    public GuestResponse get(@PathVariable("id") Long id) {
         return guestService.get(id);
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Update guest")
-    public GuestResponse update(@PathVariable Long id, @RequestBody @Validated GuestRequest request) {
+    public GuestResponse update(@PathVariable("id") Long id, @RequestBody @Validated GuestRequest request) {
         return guestService.update(id, request);
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete guest")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
         guestService.delete(id);
         return ResponseEntity.noContent().build();
     }

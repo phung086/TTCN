@@ -52,8 +52,7 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     @Transactional(readOnly = true)
     public List<RoomAvailabilityResponse> findAvailableRooms(LocalDate checkIn, LocalDate checkOut, Integer guests, Long roomTypeId) {
-        return roomRepository.findByStatus(RoomStatus.AVAILABLE).stream()
-                .filter(r -> roomTypeId == null || (r.getRoomType() != null && roomTypeId.equals(r.getRoomType().getId())))
+        return roomRepository.findAvailableRooms(checkIn, checkOut, roomTypeId).stream()
                 .map(r -> {
                     RoomAvailabilityResponse resp = new RoomAvailabilityResponse();
                     resp.setRoomId(r.getId());
@@ -70,6 +69,22 @@ public class ReservationServiceImpl implements ReservationService {
         if (request.getCheckInDate().isAfter(request.getCheckOutDate())) {
             throw new BusinessException("Check-in date must be before check-out date");
         }
+        
+        // Validate room availability
+        List<Room> availableRooms = roomRepository.findAvailableRooms(request.getCheckInDate(), request.getCheckOutDate(), null);
+        List<Long> availableRoomIds = availableRooms.stream().map(Room::getId).collect(Collectors.toList());
+        
+        List<Room> rooms = roomRepository.findAllById(request.getRoomIds());
+        if (rooms.isEmpty()) {
+            throw new BusinessException("No rooms found");
+        }
+        
+        for (Room room : rooms) {
+            if (!availableRoomIds.contains(room.getId())) {
+                throw new BusinessException("Room " + room.getRoomNumber() + " is not available for the selected dates");
+            }
+        }
+
         Reservation reservation = new Reservation();
         reservation.setGuest(guestRepository.findById(request.getGuestId())
                 .orElseThrow(() -> new NotFoundException("Guest not found")));
@@ -77,10 +92,7 @@ public class ReservationServiceImpl implements ReservationService {
         reservation.setCheckOutDate(request.getCheckOutDate());
         reservation.setStatus(ReservationStatus.PENDING);
 
-        List<Room> rooms = roomRepository.findAllById(request.getRoomIds());
-        if (rooms.isEmpty()) {
-            throw new BusinessException("No rooms found");
-        }
+        // Reuse existing rooms list from availability check
         for (Room room : rooms) {
             ReservationRoom rr = new ReservationRoom();
             rr.setReservation(reservation);

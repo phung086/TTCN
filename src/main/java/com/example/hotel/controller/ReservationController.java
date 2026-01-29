@@ -29,10 +29,10 @@ public class ReservationController {
 
     @GetMapping("/rooms/available")
     @Operation(summary = "Find available rooms")
-    public List<RoomAvailabilityResponse> available(@RequestParam LocalDate checkIn,
-                                                    @RequestParam LocalDate checkOut,
-                                                    @RequestParam(required = false) Integer guests,
-                                                    @RequestParam(required = false) Long roomTypeId) {
+    public List<RoomAvailabilityResponse> available(@RequestParam("checkIn") LocalDate checkIn,
+                                                    @RequestParam("checkOut") LocalDate checkOut,
+                                                    @RequestParam(value = "guests", required = false) Integer guests,
+                                                    @RequestParam(value = "roomTypeId", required = false) Long roomTypeId) {
         return reservationService.findAvailableRooms(checkIn, checkOut, guests, roomTypeId);
     }
 
@@ -44,31 +44,31 @@ public class ReservationController {
 
     @GetMapping("/reservations/{id}")
     @Operation(summary = "Get reservation")
-    public ReservationResponse get(@PathVariable Long id) {
+    public ReservationResponse get(@PathVariable("id") Long id) {
         return reservationService.get(id);
     }
 
     @PatchMapping("/reservations/{id}/check-in")
     @Operation(summary = "Check-in reservation")
-    public ReservationResponse checkIn(@PathVariable Long id) {
+    public ReservationResponse checkIn(@PathVariable("id") Long id) {
         return reservationService.checkIn(id);
     }
 
     @PatchMapping("/reservations/{id}/check-out")
     @Operation(summary = "Check-out reservation")
-    public ReservationResponse checkOut(@PathVariable Long id) {
+    public ReservationResponse checkOut(@PathVariable("id") Long id) {
         return reservationService.checkOut(id);
     }
 
     @PatchMapping("/reservations/{id}/cancel")
     @Operation(summary = "Cancel reservation")
-    public ReservationResponse cancel(@PathVariable Long id) {
+    public ReservationResponse cancel(@PathVariable("id") Long id) {
         return reservationService.cancel(id);
     }
 
     @PostMapping("/reservations/{id}/services")
     @Operation(summary = "Add service to reservation")
-    public ResponseEntity<ServiceRequestResponse> addService(@PathVariable Long id,
+    public ResponseEntity<ServiceRequestResponse> addService(@PathVariable("id") Long id,
                                                              @RequestBody @Validated ServiceRequestCreateRequest request) {
         return new ResponseEntity<>(reservationService.addService(id, request), HttpStatus.CREATED);
     }

@@ -1,7 +1,259 @@
+﻿{
+"info": {
+"_postman_id": "00000000-0000-0000-0000-000000000000",
+"name": "Hotel Management System",
+"description": "API Collection for Hotel Management System",
+"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+},
+"item": [
 {
-  "info": {
-    "name": "Hotel Management API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": []
+"name": "Guests",
+"item": [
+{
+"name": "List Guests",
+"request": {
+"method": "GET",
+"header": [],
+"url": {
+"raw": "{{baseUrl}}/guests",
+"host": [
+"{{baseUrl}}"
+],
+"path": [
+"guests"
+]
+}
+},
+"response": []
+},
+{
+"name": "Create Guest",
+"request": {
+"method": "POST",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json",
+"type": "text"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n    \"firstName\": \"Alice\",\n    \"lastName\": \"Wonder\",\n    \"email\": \"alice@example.com\",\n    \"phone\": \"0987-654-321\"\n}"
+},
+"url": {
+"raw": "{{baseUrl}}/guests",
+"host": [
+"{{baseUrl}}"
+],
+"path": [
+"guests"
+]
+}
+},
+"response": []
+}
+]
+},
+{
+"name": "Reservations",
+"item": [
+{
+"name": "Find Available Rooms",
+"request": {
+"method": "GET",
+"header": [],
+"url": {
+"raw": "{{baseUrl}}/rooms/available?checkIn={{checkIn}}&checkOut={{checkOut}}&guests=2",
+"host": [
+"{{baseUrl}}"
+],
+"path": [
+"rooms",
+"available"
+],
+"query": [
+{
+"key": "checkIn",
+"value": "{{checkIn}}"
+},
+{
+"key": "checkOut",
+"value": "{{checkOut}}"
+},
+{
+"key": "guests",
+"value": "2"
+}
+]
+}
+},
+"response": []
+},
+{
+"name": "Create Reservation",
+"request": {
+"method": "POST",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json",
+"type": "text"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n    \"guestId\": 1,\n    \"roomIds\": [1],\n    \"checkInDate\": \"{{checkIn}}\",\n    \"checkOutDate\": \"{{checkOut}}\"\n}"
+},
+"url": {
+"raw": "{{baseUrl}}/reservations",
+"host": [
+"{{baseUrl}}"
+],
+"path": [
+"reservations"
+]
+}
+},
+"response": []
+},
+{
+"name": "Get Reservation",
+"request": {
+"method": "GET",
+"header": [],
+"url": {
+"raw": "{{baseUrl}}/reservations/1",
+"host": [
+"{{baseUrl}}"
+],
+"path": [
+"reservations",
+"1"
+]
+}
+},
+"response": []
+},
+{
+"name": "Check In",
+"request": {
+"method": "POST",
+"header": [],
+"url": {
+"raw": "{{baseUrl}}/reservations/1/check-in",
+"host": [
+"{{baseUrl}}"
+],
+"path": [
+"reservations",
+"1",
+"check-in"
+]
+}
+},
+"response": []
+},
+{
+"name": "Add Service",
+"request": {
+"method": "POST",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json",
+"type": "text"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n    \"serviceId\": 1,\n    \"quantity\": 2\n}"
+},
+"url": {
+"raw": "{{baseUrl}}/reservations/1/services",
+"host": [
+"{{baseUrl}}"
+],
+"path": [
+"reservations",
+"1",
+"services"
+]
+}
+},
+"response": []
+}
+]
+},
+{
+"name": "Billing",
+"item": [
+{
+"name": "Get Invoice",
+"request": {
+"method": "GET",
+"header": [],
+"url": {
+"raw": "{{baseUrl}}/reservations/1/invoice",
+"host": [
+"{{baseUrl}}"
+],
+"path": [
+"reservations",
+"1",
+"invoice"
+]
+}
+},
+"response": []
+},
+{
+"name": "Pay Invoice",
+"request": {
+"method": "POST",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json",
+"type": "text"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n    \"amount\": 100.0,\n    \"method\": \"CREDIT_CARD\",\n    \"transactionRef\": \"ABC-123\"\n}"
+},
+"url": {
+"raw": "{{baseUrl}}/invoices/1/payments",
+"host": [
+"{{baseUrl}}"
+],
+"path": [
+"invoices",
+"1",
+"payments"
+]
+}
+},
+"response": []
+}
+]
+}
+],
+"variable": [
+{
+"key": "baseUrl",
+"value": "http://localhost:8080/api/v1",
+"type": "string"
+},
+{
+"key": "checkIn",
+"value": "2026-05-01",
+"type": "string"
+},
+{
+"key": "checkOut",
+"value": "2026-05-05",
+"type": "string"
+}
+]
 }

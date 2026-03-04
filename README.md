@@ -59,8 +59,8 @@ git --version
 
 **Cách A — Git clone:**
 ```bash
-git clone https://github.com/phamhung080604/ttcn.git
-cd ttcn
+git clone https://github.com/phung086/TTCN.git
+cd TTCN
 ```
 
 **Cách B — Tải ZIP:**  

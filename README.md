@@ -2,7 +2,7 @@
 
 Spring Boot 3 RESTful API for hotel management: guests, reservations, services, billing, and invoices.
 
-## Thông tin sinh viên (điền vào)
+## Thông tin sinh viên 
 
 - Họ và tên: Phạm Đình Hưng
 - Mã sinh viên: 22010145

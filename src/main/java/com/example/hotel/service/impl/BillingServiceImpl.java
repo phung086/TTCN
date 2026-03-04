@@ -37,10 +37,12 @@ public class BillingServiceImpl implements BillingService {
     @Override
     @Transactional(readOnly = true)
     public InvoiceResponse getInvoiceByReservation(Long reservationId) {
-        Invoice invoice = invoiceRepository.findAll().stream()
-                .filter(inv -> inv.getReservation() != null && reservationId.equals(inv.getReservation().getId()))
-                .findFirst()
-                .orElseThrow(() -> new NotFoundException("Invoice not found"));
+        // Verify reservation exists
+        if (!reservationRepository.existsById(reservationId)) {
+            throw new NotFoundException("Reservation not found");
+        }
+        Invoice invoice = invoiceRepository.findByReservationId(reservationId)
+                .orElseThrow(() -> new NotFoundException("Chưa có hóa đơn cho đặt phòng này. Vui lòng check-out trước."));
         return toResponse(invoice);
     }
 
@@ -57,7 +59,16 @@ public class BillingServiceImpl implements BillingService {
         payment.setStatus(PaymentStatus.PAID);
         Payment saved = paymentRepository.save(payment);
 
-        invoice.setStatus(InvoiceStatus.PARTIALLY_PAID);
+        // Check if fully paid
+        java.math.BigDecimal totalPaid = invoice.getPayments().stream()
+                .map(Payment::getAmount)
+                .reduce(java.math.BigDecimal.ZERO, java.math.BigDecimal::add)
+                .add(request.getAmount());
+        if (totalPaid.compareTo(invoice.getTotal()) >= 0) {
+            invoice.setStatus(InvoiceStatus.PAID);
+        } else {
+            invoice.setStatus(InvoiceStatus.PARTIALLY_PAID);
+        }
         invoiceRepository.save(invoice);
         return toResponse(saved);
     }

@@ -1,5 +1,6 @@
 package com.example.hotel.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -15,9 +16,11 @@ public class RoomType {
     private Integer capacity;
     private BigDecimal basePrice;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "roomType")
     private List<Room> rooms = new ArrayList<>();
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "room_type_amenity",

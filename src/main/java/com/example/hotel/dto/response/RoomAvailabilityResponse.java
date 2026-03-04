@@ -5,6 +5,24 @@ public class RoomAvailabilityResponse {
     private String roomNumber;
     private String roomType;
     private Integer capacity;
+    private java.math.BigDecimal price;
+    private String currentStatus; // AVAILABLE, OCCUPIED, RESERVED
+
+    public String getCurrentStatus() {
+        return currentStatus;
+    }
+
+    public void setCurrentStatus(String currentStatus) {
+        this.currentStatus = currentStatus;
+    }
+
+    public java.math.BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(java.math.BigDecimal price) {
+        this.price = price;
+    }
 
     public Long getRoomId() {
         return roomId;

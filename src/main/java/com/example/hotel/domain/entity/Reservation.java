@@ -1,6 +1,7 @@
 package com.example.hotel.domain.entity;
 
 import com.example.hotel.domain.enums.ReservationStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -27,12 +28,15 @@ public class Reservation {
     private BigDecimal cancelFee = BigDecimal.ZERO;
     private Integer loyaltyPointsEarned = 0;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ReservationRoom> reservationRooms = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ServiceRequest> serviceRequests = new ArrayList<>();
 
+    @JsonIgnore
     @OneToOne(mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true)
     private Invoice invoice;
 

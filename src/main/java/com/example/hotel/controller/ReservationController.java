@@ -48,6 +48,12 @@ public class ReservationController {
         return reservationService.get(id);
     }
 
+    @GetMapping("/reservations")
+    @Operation(summary = "Get all reservations")
+    public List<ReservationResponse> getAll() {
+        return reservationService.getAll();
+    }
+
     @PatchMapping("/reservations/{id}/check-in")
     @Operation(summary = "Check-in reservation")
     public ReservationResponse checkIn(@PathVariable("id") Long id) {

@@ -11,6 +11,7 @@ import java.util.List;
 
 public interface ReservationService {
     List<RoomAvailabilityResponse> findAvailableRooms(LocalDate checkIn, LocalDate checkOut, Integer guests, Long roomTypeId);
+    List<ReservationResponse> getAll();
     ReservationResponse create(ReservationCreateRequest request);
     ReservationResponse get(Long id);
     ReservationResponse checkIn(Long id);

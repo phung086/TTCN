@@ -23,18 +23,18 @@ INSERT INTO guest (id, first_name, last_name, email, phone, loyalty_points) VALU
 
 -- Room Types (5 records)
 INSERT INTO room_type (id, name, capacity, base_price) VALUES
-(1, 'Single Standard', 1, 50.00),
-(2, 'Double Standard', 2, 80.00),
-(3, 'Double Deluxe', 2, 120.00),
-(4, 'Suite', 4, 200.00),
-(5, 'Penthouse', 4, 500.00);
+(1, 'Phong Don Tieu Chuan', 1, 50.00),
+(2, 'Phong Doi Tieu Chuan', 2, 80.00),
+(3, 'Phong Doi Sang Trong', 2, 120.00),
+(4, 'Phong Thuong Gia', 4, 200.00),
+(5, 'Can Ho Ap Mai', 4, 500.00);
 
 -- Amenities (20 records)
 INSERT INTO amenity (id, name) VALUES
-(1, 'Wi-Fi'), (2, 'TV'), (3, 'Air Conditioning'), (4, 'Mini Bar'), (5, 'Safe'),
-(6, 'Balcony'), (7, 'Sea View'), (8, 'Jacuzzi'), (9, 'Kitchenette'), (10, 'Coffee Maker'),
-(11, 'Hair Dryer'), (12, 'Iron'), (13, 'Desk'), (14, 'Sofa'), (15, 'Bathrobe'),
-(16, 'Slippers'), (17, 'Toiletries'), (18, 'Room Service'), (19, 'Wake-up Service'), (20, 'Welcome Drink');
+(1, 'Wifi'), (2, 'TV'), (3, 'Air Conditioning'), (4, 'Mini Fridge'), (5, 'Safe'),
+(6, 'Balcony'), (7, 'Ocean View'), (8, 'Jacuzzi'), (9, 'Kitchenette'), (10, 'Coffee Machine'),
+(11, 'Hair Dryer'), (12, 'Iron'), (13, 'Work Desk'), (14, 'Sofa'), (15, 'Bathrobe'),
+(16, 'Slippers'), (17, 'Toiletries'), (18, 'Room Service'), (19, 'Wake-up Call'), (20, 'Welcome Drink');
 
 -- Room Type Amenities Mapping
 INSERT INTO room_type_amenity (room_type_id, amenity_id) VALUES
@@ -70,13 +70,13 @@ INSERT INTO room (id, room_number, floor, status, housekeeping_status, room_type
 -- Hotel Services (10 records)
 INSERT INTO service (id, name, category, unit_price) VALUES
 (1, 'Continental Breakfast', 'Food', 15.00),
-(2, 'Full English Breakfast', 'Food', 25.00),
+(2, 'English Breakfast', 'Food', 25.00),
 (3, 'Lunch Buffet', 'Food', 35.00),
 (4, 'Dinner Set', 'Food', 50.00),
-(5, 'Airport Shuttle', 'Transport', 40.00),
+(5, 'Airport Transfer', 'Transport', 40.00),
 (6, 'Car Rental (Day)', 'Transport', 80.00),
 (7, 'Spa Massage (1h)', 'Wellness', 90.00),
-(8, 'Gym Pass (Day)', 'Wellness', 15.00),
+(8, 'Gym Day Pass', 'Wellness', 15.00),
 (9, 'Babysitting (Hour)', 'Service', 20.00),
 (10, 'Laundry (Bag)', 'Service', 30.00);
 
@@ -108,10 +108,10 @@ INSERT INTO reservation_room (id, reservation_id, room_id, rate_per_night, guest
 (1, 1, 1, 50.00, 1),
 (2, 2, 5, 80.00, 2),
 (3, 3, 9, 120.00, 2),
-(4, 4, 3, 50.00, 1), 
-(5, 5, 7, 80.00, 2), 
-(6, 6, 11, 120.00, 2), 
-(7, 7, 17, 500.00, 2), 
+(4, 4, 3, 50.00, 1),
+(5, 5, 7, 80.00, 2),
+(6, 6, 11, 120.00, 2),
+(7, 7, 17, 500.00, 2),
 (8, 8, 2, 50.00, 1),
 (9, 9, 6, 80.00, 2),
 (10, 10, 13, 200.00, 4),
@@ -123,7 +123,7 @@ INSERT INTO reservation_room (id, reservation_id, room_id, rate_per_night, guest
 (16, 16, 12, 120.00, 2),
 (17, 17, 19, 80.00, 2),
 (18, 18, 15, 200.00, 2),
-(19, 19, 5, 80.00, 2), 
+(19, 19, 5, 80.00, 2),
 (20, 20, 18, 50.00, 1);
 
 -- Service Requests
@@ -155,3 +155,15 @@ INSERT INTO payment (id, invoice_id, amount, method, transaction_ref, status, pa
 (3, 3, 264.00, 'CARD', 'TXN789012', 'PAID', '2024-02-16 09:35:00'),
 (4, 5, 946.00, 'BANK_TRANSFER', 'TXN345678', 'PAID', '2024-03-05 12:10:00'),
 (5, 6, 2018.00, 'CARD', 'TXN901234', 'PAID', '2023-10-10 10:45:00');
+
+-- Reset sequences for H2 Database
+ALTER TABLE guest ALTER COLUMN id RESTART WITH 21;
+ALTER TABLE room ALTER COLUMN id RESTART WITH 21;
+ALTER TABLE room_type ALTER COLUMN id RESTART WITH 6;
+ALTER TABLE amenity ALTER COLUMN id RESTART WITH 21;
+ALTER TABLE reservation ALTER COLUMN id RESTART WITH 21;
+ALTER TABLE reservation_room ALTER COLUMN id RESTART WITH 21;
+ALTER TABLE service ALTER COLUMN id RESTART WITH 11;
+ALTER TABLE service_request ALTER COLUMN id RESTART WITH 11;
+ALTER TABLE invoice ALTER COLUMN id RESTART WITH 7;
+ALTER TABLE payment ALTER COLUMN id RESTART WITH 6;

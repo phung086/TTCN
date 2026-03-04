@@ -24,6 +24,12 @@ public class GuestServiceImpl implements GuestService {
 
     @Override
     public GuestResponse create(GuestRequest request) {
+        // Check if guest exists by email
+        var existing = guestRepository.findByEmail(request.getEmail());
+        if (existing.isPresent()) {
+            return toResponse(existing.get());
+        }
+
         Guest guest = new Guest();
         apply(request, guest);
         return toResponse(guestRepository.save(guest));

@@ -1,6 +1,6 @@
 package com.example.hotel.dto.request;
 
-import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
@@ -11,11 +11,11 @@ public class ReservationCreateRequest {
     @NotNull
     private Long guestId;
 
-    @Future
+    @FutureOrPresent
     @NotNull
     private LocalDate checkInDate;
 
-    @Future
+    @FutureOrPresent
     @NotNull
     private LocalDate checkOutDate;
 
